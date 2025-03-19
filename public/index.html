@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teleportation Tag Game</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="loading-screen">
+        <div class="loading-container">
+            <h1>Teleportation Tag Game</h1>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <p class="loading-text">Loading...</p>
+        </div>
+    </div>
+
+    <div id="menu-screen">
+        <div class="menu-container">
+            <h1>Teleportation Tag Game</h1>
+            <div class="menu-options">
+                <button id="play-button">Play</button>
+                <button id="options-button">Options</button>
+                <button id="help-button">Help</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="character-select-screen" class="hidden">
+        <div class="character-select-container">
+            <h2>Select Your Character</h2>
+            <div class="character-options">
+                <div class="character" data-skin="1">
+                    <div class="character-preview" id="preview-1"></div>
+                    <p>Character 1</p>
+                </div>
+                <div class="character" data-skin="2">
+                    <div class="character-preview" id="preview-2"></div>
+                    <p>Character 2</p>
+                </div>
+                <div class="character" data-skin="3">
+                    <div class="character-preview" id="preview-3"></div>
+                    <p>Character 3</p>
+                </div>
+                <div class="character" data-skin="4">
+                    <div class="character-preview" id="preview-4"></div>
+                    <p>Character 4</p>
+                </div>
+                <div class="character" data-skin="5">
+                    <div class="character-preview" id="preview-5"></div>
+                    <p>Character 5</p>
+                </div>
+            </div>
+            <div class="special-moves-selection">
+                <h3>Select Your Special Moves</h3>
+                <div class="special-moves">
+                    <div class="special-move" data-move="1">
+                        <div class="move-preview"></div>
+                        <p>Speed Boost</p>
+                    </div>
+                    <div class="special-move" data-move="2">
+                        <div class="move-preview"></div>
+                        <p>High Jump</p>
+                    </div>
+                    <div class="special-move" data-move="3">
+                        <div class="move-preview"></div>
+                        <p>Invisibility</p>
+                    </div>
+                    <div class="special-move" data-move="4">
+                        <div class="move-preview"></div>
+                        <p>Freeze Ray</p>
+                    </div>
+                    <div class="special-move" data-move="5">
+                        <div class="move-preview"></div>
+                        <p>Shield</p>
+                    </div>
+                    <div class="special-move" data-move="6">
+                        <div class="move-preview"></div>
+                        <p>Decoy</p>
+                    </div>
+                </div>
+                <div class="selected-moves">
+                    <div class="selected-move" id="move-slot-1">
+                        <p>E: None</p>
+                    </div>
+                    <div class="selected-move" id="move-slot-2">
+                        <p>Q: None</p>
+                    </div>
+                </div>
+            </div>
+            <button id="start-game-button">Start Game</button>
+        </div>
+    </div>
+
+    <div id="options-screen" class="hidden">
+        <div class="options-container">
+            <h2>Options</h2>
+            <div class="option">
+                <label for="sensitivity">Mouse Sensitivity</label>
+                <input type="range" id="sensitivity" min="1" max="10" value="5">
+            </div>
+            <div class="option">
+                <label for="volume">Volume</label>
+                <input type="range" id="volume" min="0" max="10" value="7">
+            </div>
+            <div class="option">
+                <label for="graphics">Graphics Quality</label>
+                <select id="graphics">
+                    <option value="low">Low</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            <button id="back-button">Back</button>
+        </div>
+    </div>
+
+    <div id="help-screen" class="hidden">
+        <div class="help-container">
+            <h2>How to Play</h2>
+            <div class="controls">
+                <h3>Controls</h3>
+                <ul>
+                    <li>WASD - Move</li>
+                    <li>Mouse - Look around</li>
+                    <li>Spacebar - Jump</li>
+                    <li>E - Special Move 1</li>
+                    <li>Q - Special Move 2</li>
+                    <li>1-0 - Teleport to saved location</li>
+                    <li>Shift + 1-0 - Save current location</li>
+                    <li>Tab - Show scoreboard</li>
+                    <li>Esc - Menu</li>
+                </ul>
+            </div>
+            <div class="game-rules">
+                <h3>Game Rules</h3>
+                <p>Teleportation Tag is a multiplayer tag game where one player starts as "it" and must tag other players. When a player is tagged, they join the "it" team and help catch the remaining players. The game continues until all players are caught or the time runs out.</p>
+                <p>Use teleportation spots strategically to escape or catch other players. Special moves can give you an advantage in different situations.</p>
+                <p>The game features three different landscapes: Namibian savannah, German forest, and snowy Himalaya. These landscapes transition into each other, creating a diverse and dynamic playing field.</p>
+            </div>
+            <button id="help-back-button">Back</button>
+        </div>
+    </div>
+
+    <div id="game-container" class="hidden">
+        <div id="hud">
+            <div id="health-bar">
+                <div class="health-fill"></div>
+            </div>
+            <div id="teleport-spots">
+                <div class="teleport-spot" data-key="1">1</div>
+                <div class="teleport-spot" data-key="2">2</div>
+                <div class="teleport-spot" data-key="3">3</div>
+                <div class="teleport-spot" data-key="4">4</div>
+                <div class="teleport-spot" data-key="5">5</div>
+                <div class="teleport-spot" data-key="6">6</div>
+                <div class="teleport-spot" data-key="7">7</div>
+                <div class="teleport-spot" data-key="8">8</div>
+                <div class="teleport-spot" data-key="9">9</div>
+                <div class="teleport-spot" data-key="0">0</div>
+            </div>
+            <div id="special-moves">
+                <div class="special-move-hud" id="special-move-1">E: <span>Speed Boost</span></div>
+                <div class="special-move-hud" id="special-move-2">Q: <span>High Jump</span></div>
+            </div>
+            <div id="game-status">
+                <div id="time-left">Time: <span>5:00</span></div>
+                <div id="players-left">Players: <span>0/0</span></div>
+            </div>
+            <div id="crosshair">+</div>
+        </div>
+        <div id="scoreboard" class="hidden">
+            <h2>Players</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Team</th>
+                        <th>Tags</th>
+                        <th>Escapes</th>
+                    </tr>
+                </thead>
+                <tbody id="scoreboard-body">
+                    <!-- Filled dynamically -->
+                </tbody>
+            </table>
+        </div>
+        <div id="game-over-screen" class="hidden">
+            <div class="game-over-container">
+                <h2 id="game-result">Game Over</h2>
+                <div id="final-stats">
+                    <!-- Filled dynamically -->
+                </div>
+                <button id="play-again-button">Play Again</button>
+                <button id="main-menu-button">Main Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Socket.io client -->
+    <script src="/socket.io/socket.io.js"></script>
+    
+    <!-- Main scripts -->
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -52,8 +52,7 @@ Teleportation Tag is a multiplayer tag game where one player starts as "it" and 
 
 By default, the game runs on localhost, allowing players on the same network to connect. To play with friends over the internet, you'll need to:
 
-1. Deploy the game to a hosting service like Heroku, Glitch, or Vercel
-2. Or use a service like ngrok to expose your local server
+1. Use a service like ngrok to expose your local server
 
 ## Modifying the Game
 
@@ -99,4 +98,4 @@ This project is open source and available for personal and educational use.
 
 ## Credits
 
-Created as a custom game project with teleportation mechanics, featuring multiple landscapes and day/night cycles.
+Created as a custom game project by Mika Eichhoff - www.centropy4u.com
